@@ -11,13 +11,42 @@
     <title>Pond Plants API</title>
 </head>
 <body>
-    <section>
-        <h1>Pond Plants API</h1>
-        <p class="requests">To send requests:</p>
-        <p class="url">https://pond-plants-api.herokuapp.com/api/plant name here</p>
-        <p class="example">Example:</p>
-        <p class="url">https://pond-plants-api.herokuapp.com/api/water mint</p>
+    <section id="overallContainer">
+
+        <section class="information">
+            
+            <section id="headerContainer">
+                <img id="pondIcon" src="images/pond.png">
+                <h1>Pond Plants API</h1>
+            </section>
+            
+            <p class="requests">To send requests:</p>
+            <p class="url">https://pond-plants-api.herokuapp.com/api/plant name here</p>
+            <p class="example">Example:</p>
+            <p class="url">https://pond-plants-api.herokuapp.com/api/water mint</p>
+
+        </section>
+
+        <section class="live-in-action">
+
+            <!-- <form> -->
+                <input type="text" id="getPlantTextInput" placeholder="Plant Name">
+                <button type=submit id="getPlantButton">Get Plant</button>
+            <!-- </form> -->
+
+            <p class="title">Common Name :</p>
+            <p id="commonName"></p>
+            <p class="title">Scientific Name :</p>
+            <p id="scientificName"></p>
+            <p class="title">Description :</p>
+            <p id="description"></p>
+            <p class="title">Image :</p>
+            <img id="plantImage">
+
+        </section>
+
     </section>
+
     <script src="js/main.js"></script>
 </body>
 </html>

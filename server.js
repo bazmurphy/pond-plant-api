@@ -24,17 +24,22 @@ MongoClient.connect(connectionString)
 
     // root ROUTE
     app.get('/', (request, response) => {
-    response.sendFile(__dirname + '/index.html')
+        response.sendFile(__dirname + '/index.html')
     })
 
     // client side CSS ROUTE
     app.get('/css/styles.css', (request, response) => {
-    response.sendFile(__dirname + '/css/styles.css')
+        response.sendFile(__dirname + '/css/styles.css')
     })
 
     // client side JS ROUTE
     app.get('/js/main.js', (request, response) => {
-    response.sendFile(__dirname + '/js/main.js')
+        response.sendFile(__dirname + '/js/main.js')
+    })
+
+    // client side IMAGES
+    app.get('/images/pond.png', (request, response) => {
+        response.sendFile(__dirname + '/images/pond.png')
     })
 
     // API Request ROUTE
