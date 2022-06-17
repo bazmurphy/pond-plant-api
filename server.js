@@ -25,13 +25,13 @@ MongoClient.connect(connectionString)
     response.sendFile(__dirname + '/index.html')
     })
 
-    // app.get('/css/styles.css', (request, response) => {
-    // response.sendFile(__dirname + '/css/styles.css')
-    // })
+    app.get('/css/styles.css', (request, response) => {
+    response.sendFile(__dirname + '/css/styles.css')
+    })
 
-    // app.get('/js/main.js', (request, response) => {
-    // response.sendFile(__dirname + '/js/main.js')
-    // })
+    app.get('/js/main.js', (request, response) => {
+    response.sendFile(__dirname + '/js/main.js')
+    })
 
     app.get('/api/:name', (request,response) => {
         const plantName = request.params.name.toLowerCase()
