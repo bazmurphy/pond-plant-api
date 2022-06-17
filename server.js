@@ -51,7 +51,7 @@ MongoClient.connect(connectionString)
         const plantName = request.params.name.toLowerCase()
         // get the parameter from the URL ^
         infoCollection
-            .find({ commonName: plantName }).toArray()
+            .find({commonName:plantName}).toArray()
             // find method to look for { key : value }
             // also for some reason it needs it to be wrapped as an Array ^
             // .find RETURNS A CURSOR < thats why turning into an Array works 
