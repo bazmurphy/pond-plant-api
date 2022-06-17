@@ -9,6 +9,7 @@ const connectionString = 'mongodb+srv://bazusername:bazpassword@cluster0.wgff3.m
 // mongodb connection string ^
 
 app.use(cors())
+// allows our server to communicate CROSS-DOMAIN (not just internally - default security feature)
 app.use(express.json())
 // allows us to convert back and forth to JSON ^
 
@@ -21,18 +22,22 @@ MongoClient.connect(connectionString)
         const infoCollection = db.collection('plant-info')
         // specificy which collection we are looking for ^
 
+    // root ROUTE
     app.get('/', (request, response) => {
     response.sendFile(__dirname + '/index.html')
     })
 
+    // client side CSS ROUTE
     app.get('/css/styles.css', (request, response) => {
     response.sendFile(__dirname + '/css/styles.css')
     })
 
+    // client side JS ROUTE
     app.get('/js/main.js', (request, response) => {
     response.sendFile(__dirname + '/js/main.js')
     })
 
+    // API Request ROUTE
     app.get('/api/:name', (request,response) => {
         const plantName = request.params.name.toLowerCase()
         // get the parameter from the URL ^
@@ -52,7 +57,7 @@ MongoClient.connect(connectionString)
 })
 .catch(error => console.error(error))
 
-
+// use Heroku Environment PORT
 app.listen(process.env.PORT || PORT, () => {
     console.log(`Server is running on port ${PORT}`)
 })

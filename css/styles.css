@@ -7,16 +7,33 @@
 
 body {
     font-family: 'Open Sans';
+    background: rgba(144, 238, 144, 0.4);
 }
 
 section {
-    border: 1px solid darkgreen;
+    border: 3px solid darkgreen;
     width: 50%;
     margin: 1rem auto;
     padding: 1rem;
+    background: lightskyblue;
 }
 
 h1 {
     color: darkgreen;
     padding-bottom: 1rem;
+    font-size: 2.5rem;
+}
+
+p {
+    color: rgb(0, 46, 0)green;
+    font-size: 1.25rem;
+}
+
+.requests,
+.example {
+    font-weight: bold;
+}
+
+.url {
+    padding: 1rem 0;
 }
