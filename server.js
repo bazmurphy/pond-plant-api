@@ -38,8 +38,12 @@ MongoClient.connect(connectionString)
     })
 
     // client side IMAGES
-    app.get('/images/pond.png', (request, response) => {
-        response.sendFile(__dirname + '/images/pond.png')
+    app.get('/images/pondOne.png', (request, response) => {
+        response.sendFile(__dirname + '/images/pondOne.png')
+    })
+
+    app.get('/images/pondTwo.png', (request, response) => {
+        response.sendFile(__dirname + '/images/pondTwo.png')
     })
 
     // API Request ROUTE

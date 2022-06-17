@@ -12,14 +12,13 @@ body {
 }
 
 #overallContainer {
-    
+    width: 600px;
 }
 
 .information,
 .live-in-action {
-    border: 3px solid darkgreen;
+    border: 4px solid black;
     border-radius: 0.5rem;
-    width: 600px;
     padding: 1rem;
     background: lightskyblue;
 }
@@ -28,30 +27,50 @@ body {
     display: flex;
 }
 
-#pondIcon {
-    flex-grow: 0;
-    flex-shrink: 1;
-    flex-basis: 50%;
-    justify-self: flex-start;
-    /* align-self: flex-end; */
-}
-
 h1 {
-    flex-grow: 0;
-    flex-shrink: 1;
-    flex-basis: 50%;
+    flex-grow: 1;
+    flex-shrink: 0;
+    /* flex-basis: 50%; */
     /* justify-self: flex-end; */
     align-self: center;
-    color: darkgreen;
+    font-family: 'Boogaloo';
     font-size: 2.5rem;
-    padding-bottom: 1rem;
+    color: darkgreen;
+}
+
+#pondImageOne {
+    flex-grow: 1;
+    flex-shrink: 0;
+    /* flex-basis: 50%; */
+    /* justify-self: flex-start; */
+    /* align-self: flex-end; */
+    max-width: 128px;
+    max-height: 128px;
+}
+
+#midContainer {
+    display: flex;
 }
 
 h2 {
+    flex-grow: 1;
+    flex-shrink: 0;
+    /* flex-basis: 50%; */
+    /* justify-self: flex-end; */
+    align-self: center;
+    font-family: 'Boogaloo';
+    font-size: 2rem;
     color: darkgreen;
-    font-size: 1.5rem;
-    padding-bottom: 1rem;
-    /* font-weight: bold; */
+}
+
+#pondImageTwo {
+    flex-grow: 1;
+    flex-shrink: 1;
+    /* flex-basis: 50% */
+    /* justify-self: flex-start; */
+    /* align-self: flex-end; */
+    max-width: 128px;
+    max-height: 128px;
 }
 
 #getPlantTextInput {
@@ -85,14 +104,15 @@ p {
 
 .title {
     padding: 1rem 0 0.5rem 0;
-    text-decoration: underline;
 }
 
 #commonName {
+    font-size: 1.2rem;
     font-weight: bold;
 }
 
 #scientificName {
+    font-size: 1.2rem;
     font-weight: bold;
     font-style: italic;
 }
@@ -101,6 +121,8 @@ p {
     font-weight: bold;
 }
 
-img {
+#plantImage {
     width: 100%;
+    border-radius: 0.5rem;
+    /* border: 2px solid black; */
 }
