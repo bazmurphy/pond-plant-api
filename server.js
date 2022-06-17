@@ -8,7 +8,7 @@ const MongoClient = require('mongodb').MongoClient
 const connectionString = 'mongodb+srv://bazusername:bazpassword@cluster0.wgff3.mongodb.net/?retryWrites=true&w=majority'
 // mongodb connection string ^
 
-app.use(cors())
+app.use(cors()) 
 // allows our server to communicate CROSS-DOMAIN (not just internally - default security feature)
 app.use(express.json())
 // allows us to convert back and forth to JSON ^
