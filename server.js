@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
-const PORT = 8002
+const PORT = 8000
 
 const MongoClient = require('mongodb').MongoClient
 // allows us to make connections to mongodb ^
@@ -25,6 +25,14 @@ MongoClient.connect(connectionString)
     response.sendFile(__dirname + '/index.html')
     })
 
+    // app.get('/css/styles.css', (request, response) => {
+    // response.sendFile(__dirname + '/css/styles.css')
+    // })
+
+    // app.get('/js/main.js', (request, response) => {
+    // response.sendFile(__dirname + '/js/main.js')
+    // })
+
     app.get('/api/:name', (request,response) => {
         const plantName = request.params.name.toLowerCase()
         // get the parameter from the URL ^
@@ -45,6 +53,6 @@ MongoClient.connect(connectionString)
 .catch(error => console.error(error))
 
 
-app.listen(process.env.port || PORT, () => {
+app.listen(process.env.PORT || PORT, () => {
     console.log(`Server is running on port ${PORT}`)
 })
