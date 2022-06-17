@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body {
+    font-family: 'Open Sans';
+}
+
+section {
+    border: 1px solid darkgreen;
+    width: 50%;
+    margin: 1rem auto;
+    padding: 1rem;
+}
+
+h1 {
+    color: darkgreen;
+    padding-bottom: 1rem;
+}
