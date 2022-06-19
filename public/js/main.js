@@ -1,10 +1,10 @@
 // Client Side JavaScript
 // main.js
 
-document.getElementById('getPlantButton').addEventListener('click', getAPlant)
+document.getElementById('get-plant-button').addEventListener('click', getAPlant)
 
 async function getAPlant() {
-    const plantName = document.getElementById('getPlantTextInput').value
+    const plantName = document.getElementById('get-plant-text-input').value
     // console.log(plantName)
     try {
         const response = await fetch(`https://pond-plants-api.herokuapp.com/api/${plantName}`)

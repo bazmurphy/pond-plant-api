@@ -1,0 +1,136 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body {
+    background-color: rgb(84, 223, 160);
+    background-image: url("/images/nice-snow.png");
+    padding: 1rem;
+    font-family: 'Open Sans';
+}
+
+#overall-container {
+    margin: auto;
+    width: 85vw;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1vh;
+}
+
+#overall-container > section {
+    border: 3px solid rgb(0, 123, 172);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    background-color: lightskyblue;
+    background-image: url("/images/wet-snow.png");
+}
+
+#header-sub-container {
+    display: grid;
+    grid-template-columns: 3fr auto;
+    grid-template-areas: "header-h2 pond-image"
+                        "header-p pond-image";
+
+    /* border: 2px solid pink; */
+}
+
+h1, 
+h2 {
+    align-self: center;
+    justify-self: start;
+    font-family: 'Boogaloo';
+    color: darkgreen;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+h2 {
+    font-size: 2rem;
+}
+
+.header-h2 {
+    /* border: 1px solid purple; */
+    grid-area: header-h2;
+}
+
+.header-p {
+    font-size: 0.8rem;
+    /* border: 1px solid purple; */
+    grid-area: header-p;
+}
+
+#pond-image-one,
+#pond-image-two,
+#pond-image-three,
+#pond-image-four,
+#pond-image-five,
+#pond-image-six {
+    /* align-self: start;
+    justify-self: end; */
+    max-width: 128px;
+    max-height: 128px;
+    /* border: 1px solid purple; */
+    grid-area: pond-image;
+}
+
+#get-plant-text-input {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: solid 1px darkgreen;
+    font-size: 1.2rem;
+}
+
+#get-plant-button {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: solid 1px darkgreen;
+    color: rgb(0, 46, 0);
+    background-color: rgba(255, 255, 255, 0.5);
+    font-size: 1.2rem;
+}
+
+p {
+    color: rgb(0, 46, 0);
+}
+
+.requests,
+.example {
+    font-weight: bold;
+}
+
+.api-url {
+    padding: 1rem 0;
+}
+
+.title {
+    padding: 1rem 0 0.5rem 0;
+}
+
+#commonName {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+#scientificName {
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-style: italic;
+}
+
+#description {
+    font-weight: bold;
+}
+
+#read-one > img {
+    border-radius: 0.5rem;
+    width: 100%;
+}
+
+#read-all li {
+    font-weight: bold;
+    list-style: none;
+}

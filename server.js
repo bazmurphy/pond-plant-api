@@ -13,6 +13,11 @@ app.use(cors())
 app.use(express.json())
 // allows us to convert back and forth to JSON ^
 
+// sets the view engine to EJS
+app.set('view engine', 'ejs')
+// sets the static public folder (so you don't have to link all css/js/images etc)
+app.use(express.static('public'))
+
 MongoClient.connect(connectionString)
 // connect to MongoDB using a URL ^
     .then(client => {
@@ -23,27 +28,16 @@ MongoClient.connect(connectionString)
         // specificy which collection we are looking for ^
 
     // root ROUTE
+    // app.get('/', (request, response) => {
+    //     response.sendFile(__dirname + '/index.html')
+    // })
+
     app.get('/', (request, response) => {
-        response.sendFile(__dirname + '/index.html')
-    })
-
-    // client side CSS ROUTE
-    app.get('/css/styles.css', (request, response) => {
-        response.sendFile(__dirname + '/css/styles.css')
-    })
-
-    // client side JS ROUTE
-    app.get('/js/main.js', (request, response) => {
-        response.sendFile(__dirname + '/js/main.js')
-    })
-
-    // client side IMAGES
-    app.get('/images/pondOne.png', (request, response) => {
-        response.sendFile(__dirname + '/images/pondOne.png')
-    })
-
-    app.get('/images/pondTwo.png', (request, response) => {
-        response.sendFile(__dirname + '/images/pondTwo.png')
+        db.collection('plant-info').find().toArray()
+            .then(data => {
+                response.render('index.ejs', { info: data })
+            })
+            .catch(error => console.error(error))
     })
 
     // API Request ROUTE

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Boogaloo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Pond Plants API</title>
+</head>
+
+<body>
+    <section id="overall-container">
+
+        <section class="api-information">
+
+            <section id="header-sub-container">
+                <h1>Pond Plants API</h1>
+                <img id="pond-image-one" src="images/pond-image-one.png">
+            </section>
+
+            <p class="requests">To send requests:</p>
+            <p class="api-url">https://pond-plants-api.herokuapp.com/api/plant name here</p>
+            <p class="example">Example:</p>
+            <p class="api-url">https://pond-plants-api.herokuapp.com/api/water mint</p>
+
+        </section>
+
+        <section id="read-one">
+
+            <section id="header-sub-container">
+                <h2 class="header-h2">Get a specific Plant</h2>
+                <p class="header-p">Display a specific document (by Common Name) in the collection from the DataBase and
+                    display all it's details using GET (Read)</p>
+                <img class="pond-image" id="pond-image-two" src="images/pond-image-two.png">
+            </section>
+
+            <!-- <form> -->
+            <input type="text" id="get-plant-text-input" placeholder="Plant Name">
+            <button type=submit id="get-plant-button">Get Plant</button>
+            <!-- </form> -->
+
+            <p class="title">Common Name :</p>
+            <p id="commonName"></p>
+            <p class="title">Scientific Name :</p>
+            <p id="scientificName"></p>
+            <p class="title">Description :</p>
+            <p id="description"></p>
+            <p class="title">Image :</p>
+            <img id="plantImage">
+
+        </section>
+
+        <section id="read-all">
+
+            <section id="header-sub-container">
+                <h2 class="header-h2">Get a list of all the Plants</h2>
+                <p class="header-p">Display all documents (by Common Name) in the collection from the DataBase and
+                    display a list using GET (Read)</p>
+                <img id="pond-image-three" src="images/pond-image-three.png">
+            </section>
+            <section>
+            <ul class="plant-info">
+                <% for(let i=0; i < info.length; i++) {%>
+                    <li class="plant">
+                        <span>
+                            <%= info[i].commonName %>
+                        </span>
+                    </li>
+                    <% } %>
+            </ul>
+            </section>
+        </section>
+
+        <section id="create">
+
+            <section id="header-sub-container">
+                <h2 class="header-h2">Add a Plant</h2>
+                <p class="header-p">Add a document and all it's details to the DataBase using POST (Create)</p>
+                <img id="pond-image-four" src="images/pond-image-four.png">
+            </section>
+            <section>
+                <p>form with all fields and submit new entry here</p>
+            </section>
+        </section>
+
+        <section id="delete">
+
+            <section id="header-sub-container">
+                <h2 class="header-h2">Delete a Plant</h2>
+                <p class="header-p">Delete a document (by Common Name) from the DataBase using DELETE (Delete)</p>
+                <img id="pond-image-five" src="images/pond-image-five.png">
+            </section>
+            <section>
+                <p>text input for name and delete entry button here</p>
+            </section>
+        </section>
+
+        <section id="update">
+
+            <section id="header-sub-container">
+                <h2 class="header-h2">Update a Plant</h2>
+                <p class="header-p">Update a document using PUT (Update)</p>
+                <img id="pond-image-six" src="images/pond-image-six.png">
+            </section>
+            <section>
+                <p>form with all fields and submit update entry button here</p>
+            </section>
+
+        </section>
+
+
+
+    </section>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
