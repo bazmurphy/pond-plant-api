@@ -14,7 +14,8 @@ body {
 
 #overall-container {
     margin: auto;
-    width: 85vw;
+    /* width: 85vw; */
+    max-width: 960px;
     display: grid;
     grid-template-columns: 1fr;
     gap: 1vh;
