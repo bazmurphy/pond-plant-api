@@ -57,6 +57,16 @@ MongoClient.connect(connectionString)
         .catch(error => console.error(error))
     })
 
+    app.post('/addPlant', (request, response) => {
+        console.log(request.body)
+        db.collection('plant-info').insertOne({ commonName: request.body.commonName, scientificName: request.body.scientificName, plantDescription: request.body.plantDescription, plantImage: request.body.plantImage})
+        .then(result => {
+            console.log('Plant Added')
+            response.redirect('/')
+        })
+        .catch(error => console.error(error))
+    })
+
 })
 .catch(error => console.error(error))
 

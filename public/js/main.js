@@ -13,8 +13,8 @@ async function getAPlant() {
 
         document.getElementById('commonName').innerText = capitalise(data.commonName)
         document.getElementById('scientificName').innerText = data.scientificName
-        document.getElementById('description').innerText = data.description
-        document.getElementById('plantImage').src = data.image
+        document.getElementById('plantDescription').innerText = data.plantDescription
+        document.getElementById('plantImage').src = data.plantImage
 
     } catch (error) {
         console.log(error)

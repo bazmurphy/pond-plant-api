@@ -49,7 +49,7 @@
             <p class="title">Scientific Name :</p>
             <p id="scientificName"></p>
             <p class="title">Description :</p>
-            <p id="description"></p>
+            <p id="plantDescription"></p>
             <p class="title">Image :</p>
             <img id="plantImage">
 
@@ -84,7 +84,13 @@
                 <img id="pond-image-four" src="images/pond-image-four.png">
             </section>
             <section>
-                <p>form with all fields and submit new entry here</p>
+                <form action="/addPlant" method="POST">
+                    <input type="text" placeholder="Common Name" name="commonName">
+                    <input type="text" placeholder="Scientific Name" name="scientificName">
+                    <input type="text" placeholder="Description" name="plantDescription">
+                    <input type="text" placeholder="Image URL" name="plantImage">
+                    <input type="submit">
+                </form>
             </section>
         </section>
 
