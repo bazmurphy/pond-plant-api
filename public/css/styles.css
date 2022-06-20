@@ -135,3 +135,19 @@ p {
     font-weight: bold;
     list-style: none;
 }
+
+#create form {
+    display: grid;
+    padding: 1rem 0;
+}
+
+#create form input {
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+#submitButton {
+    font-weight: bold;
+}

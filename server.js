@@ -8,14 +8,14 @@ const MongoClient = require('mongodb').MongoClient
 const connectionString = 'mongodb+srv://bazusername:bazpassword@cluster0.wgff3.mongodb.net/?retryWrites=true&w=majority'
 // mongodb connection string ^
 
+app.use(cors())
+// allows our server to communicate CROSS-DOMAIN (not just internally - default security feature)
+
 // sets the view engine to EJS
 app.set('view engine', 'ejs')
 
 // sets the static public folder (so you don't have to link all css/js/images etc)
 app.use(express.static('public'))
-
-app.use(cors()) 
-// allows our server to communicate CROSS-DOMAIN (not just internally - default security feature)
 
 app.use(express.urlencoded({ extended: true }))
 // express.urlencoded() is a method inbuilt in express to recognize the incoming Request Object as strings or arrays. 
@@ -23,7 +23,6 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use(express.json())
 // allows us to convert back and forth to JSON ^
-
 
 MongoClient.connect(connectionString)
 // connect to MongoDB using a URL ^
@@ -49,7 +48,7 @@ MongoClient.connect(connectionString)
 
     // API Request ROUTE
     app.get('/api/:name', (request,response) => {
-        const plantName = request.params.name.toLowerCase()
+        const plantName = request.params.name
         // get the parameter from the URL ^
         infoCollection
             .find({commonName:plantName}).toArray()
@@ -64,14 +63,19 @@ MongoClient.connect(connectionString)
         .catch(error => console.error(error))
     })
 
+    // /addPlant FORM POST ROUTE
     app.post('/addPlant', (request, response) => {
         console.log(request)
-        db.collection('plant-info').insertOne({commonName: request.body.commonName, scientificName: request.body.scientificName, plantDescription: request.body.plantDescription, plantImage: request.body.plantImage})
-        .then(result => {
-            console.log('Plant Added')
-            response.redirect('/')
-        })
-        .catch(error => console.error(error))
+        db.collection('plant-info')
+            .insertOne({commonName: request.body.commonName, 
+                        scientificName: request.body.scientificName, 
+                        plantDescription: request.body.plantDescription, 
+                        plantImage: request.body.plantImage})
+            .then(result => {
+                console.log('Plant Added')
+                response.redirect('/')
+            })
+            .catch(error => console.error(error))
     })
 
 })
