@@ -8,15 +8,22 @@ const MongoClient = require('mongodb').MongoClient
 const connectionString = 'mongodb+srv://bazusername:bazpassword@cluster0.wgff3.mongodb.net/?retryWrites=true&w=majority'
 // mongodb connection string ^
 
+// sets the view engine to EJS
+app.set('view engine', 'ejs')
+
+// sets the static public folder (so you don't have to link all css/js/images etc)
+app.use(express.static('public'))
+
 app.use(cors()) 
 // allows our server to communicate CROSS-DOMAIN (not just internally - default security feature)
+
+app.use(express.urlencoded({ extended: true }))
+// express.urlencoded() is a method inbuilt in express to recognize the incoming Request Object as strings or arrays. 
+// This method is called a middleware in your application using the code: app.use(express.urlencoded());
+
 app.use(express.json())
 // allows us to convert back and forth to JSON ^
 
-// sets the view engine to EJS
-app.set('view engine', 'ejs')
-// sets the static public folder (so you don't have to link all css/js/images etc)
-app.use(express.static('public'))
 
 MongoClient.connect(connectionString)
 // connect to MongoDB using a URL ^
@@ -58,8 +65,8 @@ MongoClient.connect(connectionString)
     })
 
     app.post('/addPlant', (request, response) => {
-        console.log(request.body)
-        db.collection('plant-info').insertOne({ commonName: request.body.commonName, scientificName: request.body.scientificName, plantDescription: request.body.plantDescription, plantImage: request.body.plantImage})
+        console.log(request)
+        db.collection('plant-info').insertOne({commonName: request.body.commonName, scientificName: request.body.scientificName, plantDescription: request.body.plantDescription, plantImage: request.body.plantImage})
         .then(result => {
             console.log('Plant Added')
             response.redirect('/')

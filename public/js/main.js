@@ -11,7 +11,7 @@ async function getAPlant() {
         const data = await response.json()
         // console.log(data)
 
-        document.getElementById('commonName').innerText = capitalise(data.commonName)
+        document.getElementById('commonName').innerText = data.commonName
         document.getElementById('scientificName').innerText = data.scientificName
         document.getElementById('plantDescription').innerText = data.plantDescription
         document.getElementById('plantImage').src = data.plantImage
@@ -21,9 +21,9 @@ async function getAPlant() {
     }
 }
 
-function capitalise(word) {
-    return word
-        .split(" ")
-        .map(element => element.charAt(0).toUpperCase() + element.substring(1).toLowerCase())
-        .join(" ")
-}
+// function capitalise(word) {
+//     return word
+//         .split(" ")
+//         .map(element => element.charAt(0).toUpperCase() + element.substring(1).toLowerCase())
+//         .join(" ")
+// }
