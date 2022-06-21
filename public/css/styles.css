@@ -151,3 +151,13 @@ p {
 #submitButton {
     font-weight: bold;
 }
+
+footer {
+    font-size: 0.8rem;
+}
+
+footer a {
+    color: darkgreen;
+    text-decoration: none;
+    padding: 0 0.5rem;
+}

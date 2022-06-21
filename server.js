@@ -11,6 +11,7 @@ const PORT = 8000
 require('dotenv').config()
 // require dotenv for the .env file
 
+
 let db,
     dbConnectionString = process.env.DB_STRING,
     dbName = 'pond-plant-api'
@@ -39,6 +40,7 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use(express.json())
 // allows us to convert back and forth to JSON ^
+
 
 // root ROUTE
 app.get('/', (request, response) => {
