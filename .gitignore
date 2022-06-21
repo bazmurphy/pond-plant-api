@@ -1,3 +1,4 @@
 node_modules
 public/images/unused
 objectlayout.json
+.env

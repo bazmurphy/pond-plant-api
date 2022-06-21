@@ -1,21 +1,37 @@
 const express = require('express')
+// require express
 const app = express()
+// set "app" as the shorthand for express
 const cors = require('cors')
-const PORT = 8000
-
+// require CORS for cross domain issues
 const MongoClient = require('mongodb').MongoClient
 // allows us to make connections to mongodb ^
-const connectionString = 'mongodb+srv://bazusername:bazpassword@cluster0.wgff3.mongodb.net/?retryWrites=true&w=majority'
-// mongodb connection string ^
+const PORT = 8000
+// set the port
+require('dotenv').config()
+// require dotenv for the .env file
+
+let db,
+    dbConnectionString = process.env.DB_STRING,
+    dbName = 'pond-plant-api'
+// create 3 variables the db,
+// the Connection String stored in the .env file as DB_STRING
+
+MongoClient.connect(dbConnectionString, { usedUnifiedTopology: true })
+    .then(client => {
+        console.log(`Connected to the ${dbName} Database`)
+        db = client.db(dbName)
+    })
+
 
 app.use(cors())
-// allows our server to communicate CROSS-DOMAIN (not just internally - default security feature)
+// allows our server to communicate CROSS-DOMAIN (not just internally, it's a security feature turned off by default)
 
-// sets the view engine to EJS
 app.set('view engine', 'ejs')
+// sets the view engine to EJS
 
-// sets the static public folder (so you don't have to link all css/js/images etc)
 app.use(express.static('public'))
+// sets the static public folder (so you don't have to link all css/js/images manually)
 
 app.use(express.urlencoded({ extended: true }))
 // express.urlencoded() is a method inbuilt in express to recognize the incoming Request Object as strings or arrays. 
@@ -24,62 +40,50 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 // allows us to convert back and forth to JSON ^
 
-MongoClient.connect(connectionString)
-// connect to MongoDB using a URL ^
-    .then(client => {
-        console.log('Connected to Database')
-        const db = client.db('pond-plant-api')
-        // specify which database we are looking for^
-        const infoCollection = db.collection('plant-info')
-        // specificy which collection we are looking for ^
-
-    // root ROUTE
-    // app.get('/', (request, response) => {
-    //     response.sendFile(__dirname + '/index.html')
-    // })
-
-    app.get('/', (request, response) => {
-        db.collection('plant-info').find().toArray()
-            .then(data => {
-                response.render('index.ejs', { info: data })
-            })
-            .catch(error => console.error(error))
-    })
-
-    // API Request ROUTE
-    app.get('/api/:name', (request,response) => {
-        const plantName = request.params.name
-        // get the parameter from the URL ^
-        infoCollection
-            .find({commonName:plantName}).toArray()
-            // find method to look for { key : value }
-            // also for some reason it needs it to be wrapped as an Array ^
-            // .find RETURNS A CURSOR < thats why turning into an Array works 
-            .then(results => {
-                console.log(results)
-                response.json(results[0])
-                // we remove the Array wrapper by specifying [0]^
+// root ROUTE
+app.get('/', (request, response) => {
+    db.collection('plant-info')
+        .find()
+        .toArray()
+        .then(data => {
+            response.render('index.ejs', { info: data })
         })
         .catch(error => console.error(error))
-    })
-
-    // /addPlant FORM POST ROUTE
-    app.post('/addPlant', (request, response) => {
-        console.log(request)
-        db.collection('plant-info')
-            .insertOne({commonName: request.body.commonName, 
-                        scientificName: request.body.scientificName, 
-                        plantDescription: request.body.plantDescription, 
-                        plantImage: request.body.plantImage})
-            .then(result => {
-                console.log('Plant Added')
-                response.redirect('/')
-            })
-            .catch(error => console.error(error))
-    })
-
 })
-.catch(error => console.error(error))
+
+// API Request ROUTE
+app.get('/api/:name', (request,response) => {
+    const plantName = request.params.name
+    // get the parameter from the URL ^
+    db.collection('plant-info')
+        .find({commonName:plantName}) 
+        // find method to look for { key : value }
+        .toArray() 
+        // also for some reason it needs it to be wrapped as an Array ^
+        // .find RETURNS A CURSOR < thats why turning into an Array works 
+        .then(results => {
+            console.log(results)
+            response.json(results[0])
+            // we remove the Array wrapper by specifying [0]^
+    })
+    .catch(error => console.error(error))
+})
+
+// /addPlant FORM POST ROUTE
+app.post('/addPlant', (request, response) => {
+    console.log(request)
+    db.collection('plant-info')
+        .insertOne({commonName: request.body.commonName, 
+                    scientificName: request.body.scientificName, 
+                    plantDescription: request.body.plantDescription, 
+                    plantImage: request.body.plantImage})
+        .then(result => {
+            console.log('Plant Added')
+            response.redirect('/')
+        })
+        .catch(error => console.error(error))
+})
+
 
 // use Heroku Environment PORT
 app.listen(process.env.PORT || PORT, () => {
