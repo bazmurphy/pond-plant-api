@@ -17,7 +17,7 @@ let db,
 // create 3 variables the db,
 // the Connection String stored in the .env file as DB_STRING
 
-MongoClient.connect(dbConnectionString, { usedUnifiedTopology: true })
+MongoClient.connect(dbConnectionString, { useUnifiedTopology: true })
     .then(client => {
         console.log(`Connected to the ${dbName} Database`)
         db = client.db(dbName)
