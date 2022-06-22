@@ -1,12 +1,12 @@
 // Client Side JavaScript
 // main.js
 
-document.getElementById('get-plant-button').addEventListener('click', getPlant)
+document.getElementById('read-one-plant-button').addEventListener('click', readOnePlant)
 document.getElementById('update-plant-button').addEventListener('click', updatePlant)
 document.getElementById('delete-plant-button').addEventListener('click', deletePlant)
 
-async function getPlant() {
-    const textFromInput = document.getElementById('get-plant-text-input').value
+async function readOnePlant() {
+    const textFromInput = document.getElementById('read-one-plant-text-input').value
     console.log(textFromInput)
     try {
         const response = await fetch(`https://pond-plants-api.herokuapp.com/api/${textFromInput}`)
@@ -30,8 +30,8 @@ async function updatePlant() {
             body: JSON.stringify({
                 commonName: document.getElementById('update-common-name').value,
                 scientificNameName: document.getElementById('update-scientific-name').value,
-                plantDescription: document.getElementById('update-description').value,
-                plantImage: document.getElementById('update-image').value
+                description: document.getElementById('update-description').value,
+                image: document.getElementById('update-image').value
             })
         })
         const data = await response.json()

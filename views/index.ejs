@@ -20,7 +20,7 @@
 
             <section id="header-sub-container">
                 <h1 class="header-h1">Pond Plants API</h1>
-                <p class="header-p">An API demonstrating CRUD built using HTML, CSS, JavaScript, Node, Express, MongoDB and Heroku</p>
+                <p class="header-p">A Full Stack Web Application demonstrating a REST/CRUD API built using HTML, CSS, JavaScript, Node, Express, MongoDB and Heroku</p>
                 <img id="pond-image-one" src="images/pond-image-one.png">
             </section>
 
@@ -31,37 +31,11 @@
 
         </section>
 
-        <section id="read-one">
-
-            <section id="header-sub-container">
-                <h2 class="header-h2">Get a specific Plant</h2>
-                <p class="header-p">Display a specific document (by Common Name) and all of it's details from the collection in the Database using GET (Read)</p>
-                <img class="pond-image" id="pond-image-two" src="images/pond-image-two.png">
-            </section>
-
-            <section id="read-one-form-container">
-                <input type="text" id="get-plant-text-input" placeholder="Common Name">
-                <button type=submit id="get-plant-button">Get Plant</button>
-            </section>
-
-            <section>
-                <p class="title">Common Name :</p>
-                <p id="read-one-common-name"></p>
-                <p class="title">Scientific Name :</p>
-                <p id="read-one-scientific-name"></p>
-                <p class="title">Description :</p>
-                <p id="read-one-description"></p>
-                <p class="title">Image :</p>
-                <img id="read-one-image">
-            </section>
-
-        </section>
-
         <section id="read-all">
 
             <section id="header-sub-container">
                 <h2 class="header-h2">Get a list of all the Plants</h2>
-                <p class="header-p">Display all documents (by Common Name) from the collection in the Database using GET (Read)</p>
+                <p class="header-p">Read (GET) all documents (by Common Name) from the collection in the Database</p>
                 <img id="pond-image-three" src="images/pond-image-three.png">
             </section>
             <section>
@@ -77,11 +51,38 @@
             </section>
         </section>
 
+        <section id="read-one">
+        
+            <section id="header-sub-container">
+                <h2 class="header-h2">Get a specific Plant</h2>
+                <p class="header-p">Read (GET) a specific document (by Common Name) and all of it's details from the collection
+                    in the Database</p>
+                <img class="pond-image" id="pond-image-two" src="images/pond-image-two.png">
+            </section>
+        
+            <section id="read-one-form-container">
+                <input type="text" id="read-one-plant-text-input" placeholder="Common Name">
+                <button type=submit id="read-one-plant-button">Get the Plant</button>
+            </section>
+        
+            <section>
+                <p class="title">Common Name :</p>
+                <p id="read-one-common-name"></p>
+                <p class="title">Scientific Name :</p>
+                <p id="read-one-scientific-name"></p>
+                <p class="title">Description :</p>
+                <p id="read-one-description"></p>
+                <p class="title">Image :</p>
+                <img id="read-one-image">
+            </section>
+        
+        </section>
+
         <section id="create">
 
             <section id="header-sub-container">
                 <h2 class="header-h2">Add a Plant</h2>
-                <p class="header-p">Add a document (by Common Name) and all of it's details to the collection in the Database using POST (Create)</p>
+                <p class="header-p">Create (POST) a document (by Common Name) and all of it's details in the collection in the Database</p>
                 <img id="pond-image-four" src="images/pond-image-four.png">
             </section>
             <section>
@@ -90,21 +91,8 @@
                     <input type="text" placeholder="Add Scientific Name" name="scientificName">
                     <input type="text" placeholder="Add Description" name="description">
                     <input type="text" placeholder="Add Image URL" name="image"> 
-                    <input type="submit" id="add-plant-button" value="Add the Plant">
+                    <input type="submit" id="create-plant-button" value="Add the Plant">
                 </form>
-            </section>
-        </section>
-
-        <section id="delete">
-
-            <section id="header-sub-container">
-                <h2 class="header-h2">Delete a Plant</h2>
-                <p class="header-p">Delete a document (by Common Name) from the collection in the Database using DELETE (Delete)</p>
-                <img id="pond-image-five" src="images/pond-image-five.png">
-            </section>
-            <section id="delete-form-container">
-                <input type="text" id="delete-plant-text-input" placeholder="Common Name to Delete">
-                <button type="button" id="delete-plant-button" name="deletePlant">Delete the Plant</button>
             </section>
         </section>
 
@@ -112,17 +100,30 @@
 
             <section id="header-sub-container">
                 <h2 class="header-h2">Update a Plant</h2>
-                <p class="header-p">Update a document (by Common Name) in the collection from the Database using PUT (Update)</p>
+                <p class="header-p">Update (PUT) a document (by Common Name) in the collection in the Database</p>
                 <img id="pond-image-six" src="images/pond-image-six.png">
             </section>
             <section id="update-form-container">
-                    <input type="text" id="update-common-name" placeholder="Common Name to Update" name="commonName">
-                    <input type="text" id="update-scientific-name" placeholder="Update Scientific Name" name="scientificName">
-                    <input type="text" id="update-description" placeholder="Update Description" name="description">
-                    <input type="text" id="update-image" placeholder="Update Image URL" name="image">
-                    <button type="button" id="update-plant-button" name="updatePlant">Update the Plant</button>
+                    <input type="text" id="update-common-name" placeholder="Common Name to Update">
+                    <input type="text" id="update-scientific-name" placeholder="Update Scientific Name">
+                    <input type="text" id="update-description" placeholder="Update Description">
+                    <input type="text" id="update-image" placeholder="Update Image URL">
+                    <button type="button" id="update-plant-button">Update the Plant</button>
             </section>
 
+        </section>
+
+        <section id="delete">
+        
+            <section id="header-sub-container">
+                <h2 class="header-h2">Delete a Plant</h2>
+                <p class="header-p">Delete (DELETE) a document (by Common Name) from the collection in the Database</p>
+                <img id="pond-image-five" src="images/pond-image-five.png">
+            </section>
+            <section id="delete-form-container">
+                <input type="text" id="delete-plant-text-input" placeholder="Common Name to Delete">
+                <button type="button" id="delete-plant-button">Delete the Plant</button>
+            </section>
         </section>
 
         <footer>

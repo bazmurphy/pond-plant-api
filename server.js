@@ -73,12 +73,12 @@ app.get('/api/:name', (request,response) => {
 
 // '/addPlant' POST (Create) ROUTE
 app.post('/addPlant', (request, response) => {
-    console.log(request)
+    console.log(request.body)
     db.collection('plant-info')
         .insertOne({ commonName: request.body.commonName, 
                     scientificName: request.body.scientificName, 
-                    plantDescription: request.body.description, 
-                    plantImage: request.body.image })
+                    description: request.body.description, 
+                    image: request.body.image })
         .then(result => {
             console.log('Plant Added')
             response.redirect('/')
