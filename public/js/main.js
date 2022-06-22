@@ -1,21 +1,63 @@
 // Client Side JavaScript
 // main.js
 
-document.getElementById('get-plant-button').addEventListener('click', getAPlant)
+document.getElementById('get-plant-button').addEventListener('click', getPlant)
+document.getElementById('update-plant-button').addEventListener('click', updatePlant)
+document.getElementById('delete-plant-button').addEventListener('click', deletePlant)
 
-async function getAPlant() {
-    const plantName = document.getElementById('get-plant-text-input').value
-    console.log(plantName)
+async function getPlant() {
+    const textFromInput = document.getElementById('get-plant-text-input').value
+    console.log(textFromInput)
     try {
-        const response = await fetch(`https://pond-plants-api.herokuapp.com/api/${plantName}`)
+        const response = await fetch(`https://pond-plants-api.herokuapp.com/api/${textFromInput}`)
         const data = await response.json()
         console.log(data)
+        document.getElementById('read-one-common-name').innerText = data.commonName
+        document.getElementById('read-one-scientific-name').innerText = data.scientificName
+        document.getElementById('read-one-description').innerText = data.description
+        document.getElementById('read-one-image').src = data.image
 
-        document.getElementById('commonName').innerText = data.commonName
-        document.getElementById('scientificName').innerText = data.scientificName
-        document.getElementById('plantDescription').innerText = data.plantDescription
-        document.getElementById('plantImage').src = data.plantImage
+    } catch (error) {
+        console.log(error)
+    }
+}
 
+async function updatePlant() {
+    try {
+        const response = await fetch('updatePlant', {
+            method: 'put',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                commonName: document.getElementById('update-common-name').value,
+                scientificNameName: document.getElementById('update-scientific-name').value,
+                plantDescription: document.getElementById('update-description').value,
+                plantImage: document.getElementById('update-image').value
+            })
+        })
+        const data = await response.json()
+        console.log(data)
+        location.reload()
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+async function deletePlant() {
+    const textFromInput = document.getElementById('delete-plant-text-input').value
+    console.log(textFromInput)
+    try {
+        const response = await fetch('deletePlant', {
+            method: 'delete',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                commonName: textFromInput
+            })
+        })
+        console.log(response)
+        const data = await response.json()
+        console.log(data)
+        location.reload()
     } catch (error) {
         console.log(error)
     }

@@ -34,8 +34,6 @@ body {
     grid-template-columns: 3fr auto;
     grid-template-areas: "header-h2 pond-image"
                         "header-p pond-image";
-
-    /* border: 2px solid pink; */
 }
 
 h1, 
@@ -47,10 +45,10 @@ h2 {
 }
 
 h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
 }
 h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 
 .header-h2 {
@@ -108,25 +106,25 @@ p {
 }
 
 .title {
-    padding: 1rem 0 0.5rem 0;
+    padding: 1.5rem 0 0.5rem 0;
 }
 
-#commonName {
+#read-one-common-name {
     font-size: 1.2rem;
     font-weight: bold;
 }
 
-#scientificName {
+#read-one-scientific-name {
     font-size: 1.2rem;
     font-weight: bold;
     font-style: italic;
 }
 
-#description {
+#read-one-description {
     font-weight: bold;
 }
 
-#read-one > img {
+#read-one-image {
     border-radius: 0.5rem;
     width: 100%;
 }
@@ -136,12 +134,18 @@ p {
     list-style: none;
 }
 
-#create form {
+#create form,
+#delete-form-container,
+#update-form-container{
     display: grid;
     padding: 1rem 0;
 }
 
-#create form input {
+#create form input,
+#update input,
+#update button,
+#delete input,
+#delete button {
     border: 1px solid black;
     border-radius: 0.5rem;
     padding: 0.5rem;

@@ -58,7 +58,7 @@ app.get('/api/:name', (request,response) => {
     const plantName = request.params.name
     // get the parameter from the URL ^
     db.collection('plant-info')
-        .find({commonName:plantName}) 
+        .find({ commonName: plantName }) 
         // find method to look for { key : value }
         .toArray() 
         // also for some reason it needs it to be wrapped as an Array ^
@@ -71,19 +71,54 @@ app.get('/api/:name', (request,response) => {
     .catch(error => console.error(error))
 })
 
-// /addPlant FORM POST ROUTE
+// '/addPlant' POST (Create) ROUTE
 app.post('/addPlant', (request, response) => {
     console.log(request)
     db.collection('plant-info')
-        .insertOne({commonName: request.body.commonName, 
+        .insertOne({ commonName: request.body.commonName, 
                     scientificName: request.body.scientificName, 
-                    plantDescription: request.body.plantDescription, 
-                    plantImage: request.body.plantImage})
+                    plantDescription: request.body.description, 
+                    plantImage: request.body.image })
         .then(result => {
             console.log('Plant Added')
             response.redirect('/')
         })
         .catch(error => console.error(error))
+})
+
+// '/updatePlant' PUT (Update) ROUTE
+app.put('/updatePlant', (request, response) => {
+    console.log(request.body)
+    Object.keys(request.body).forEach(key => {
+        if (request.body[key] === null || request.body[key] === undefined || request.body[key] === '') {
+            delete request.body[key]
+        }
+    })
+    console.log(request.body)
+    db.collection('plant-info')
+        .findOneAndUpdate(
+        { commonName: request.body.commonName },
+        {   
+            $set: request.body
+        }
+    )
+    .then(result => {
+        console.log(result)
+        response.json('Plant Updated')
+    })
+    .catch(error => console.error(error))
+})
+
+// '/deletePlant' DELETE (Delete) ROUTE
+app.delete('/deletePlant', (request, response) => {
+    db.collection('plant-info').deleteOne(
+        { commonName: request.body.commonName }
+    )
+    .then(result => {
+        console.log(result)
+        response.json('Plant Deleted')
+    })
+    .catch(error => console.error(error))
 })
 
 
